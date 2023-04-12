@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1&family=Rubik&family=Rubik+Gemstones&family=Tilt+Neon&display=swap');
+
+:root {
+  --secondary-text-color: #FFCD78;
+  --main-text-color: #d4d5d8;
+  --main-background-color: #0E1827;
+  --secondary-background-color: #3A95C9;
+  --secondary-hover-color: #6cbae7
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  /* The default font size of the browser is 16px, so if we want 1rem to be equal to 10px, we divide 10px by 16px = 62.5% */
+  font-size: 62.5%;
+}
+
+@media only screen and (max-width: 800px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: var(--main-text-color);
+  text-decoration: none;
+  cursor: pointer;
+  
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'M PLUS 1', sans-serif;
+  color: var(--main-text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'M PLUS 1', sans-serif;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.center-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
