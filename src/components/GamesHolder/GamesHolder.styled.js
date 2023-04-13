@@ -5,12 +5,28 @@ const Wrapped = styled.div`
     height: 70%;
     margin: auto;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    /* flex-wrap: wrap; */
     overflow: scroll;
     overflow-x: hidden;
     /* border: 3px white solid; */
+
+    .row {
+        flex-wrap: wrap;
+    }
+
+    .filter {
+        margin: 1rem;
+    }
+
+    h2 {
+        margin-right: 2rem;
+    }
+
+    input {
+        max-height: 2rem;
+    }
 `;
 
 export default Wrapped;

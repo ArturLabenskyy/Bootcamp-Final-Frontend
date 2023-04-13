@@ -5,7 +5,7 @@ const Wrapped = styled.div`
         width: 25rem;
         height: 25rem;
         margin: 1rem;
-        border: 1.3px solid var(--secondary-background-color);
+        /* border: 1.3px solid var(--secondary-background-color); */
         border-radius: 3rem;
         overflow: scroll;
         padding-bottom: 0.7rem;
@@ -13,6 +13,7 @@ const Wrapped = styled.div`
 
     .game-card:hover {
         cursor: pointer;
+        background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
     }
 
     .game-card::-webkit-scrollbar {
@@ -35,6 +36,7 @@ const Wrapped = styled.div`
 
     .description {
         margin: 0.7rem;
+        font-weight: 500;
         text-align: center;
     }
 `;
