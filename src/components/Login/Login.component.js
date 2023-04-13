@@ -10,7 +10,7 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const { setLogin, getCurrentUser } = useAuthContext();
+    const { setLogin } = useAuthContext();
 
     const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ const Login = () => {
 
                 setLogin(true);
                 navigate("/");
-                await getCurrentUser();
+                // await getCurrentUser();
             }
         } catch (error) {
             console.log(error);

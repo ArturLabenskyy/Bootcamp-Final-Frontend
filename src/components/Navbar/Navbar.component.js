@@ -8,13 +8,13 @@ import Wrapped from "./Navbar.styled";
 const Navbar = () => {
     const navigate = useNavigate();
 
-    const { isLogin, setLogin, logoutUser, getCurrentUser } = useAuthContext();
+    const { isLogin, setLogin, logoutUser } = useAuthContext();
 
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
             setLogin(true);
-            getCurrentUser();
+            // getCurrentUser();
         } else {
             setLogin(false);
         }
@@ -40,7 +40,7 @@ const Navbar = () => {
                     src="https://cdn-icons-png.flaticon.com/512/6841/6841127.png"
                     alt="logo"
                 />
-                <h1>WannaPlay</h1>
+                <h1>iWannaPlay</h1>
             </div>
 
             <div className="mid-links center-text">
