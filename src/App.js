@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthProvider } from "./context/auth.context";
 import { GamesProvider } from "./context/games.context";
 import { CommentsProvider } from "./context/comments.context";
+import { PostProvider } from "./context/post.context";
 
 import "./styles/app.css";
 
@@ -14,6 +15,7 @@ import LoginPage from "./pages/login.page";
 import AboutPage from "./pages/about.page";
 import BrowsePage from "./pages/browse.page";
 import CategoryPage from "./pages/category.page";
+import PostPage from "./pages/post.page";
 
 const router = createBrowserRouter([
     {
@@ -47,6 +49,11 @@ const router = createBrowserRouter([
     },
 
     {
+        path: "/posts/:id",
+        element: <PostPage />,
+    },
+
+    {
         path: "*",
         element: <ErrorPage />,
     },
@@ -57,9 +64,11 @@ function App() {
         <AuthProvider>
             <GamesProvider>
                 <CommentsProvider>
-                    <div className="main">
-                        <RouterProvider router={router} />
-                    </div>
+                    <PostProvider>
+                        <div className="main">
+                            <RouterProvider router={router} />
+                        </div>
+                    </PostProvider>
                 </CommentsProvider>
             </GamesProvider>
         </AuthProvider>

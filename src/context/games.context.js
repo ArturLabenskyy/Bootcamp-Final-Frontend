@@ -7,7 +7,9 @@ export const GamesContext = createContext();
 
 const GamesProvider = ({ children }) => {
     const [allGames, setGames] = useState([]);
-    const [gamePosts, setPosts] = useState([]);
+    const [gamePosts, setPosts] = useState(
+        JSON.parse(localStorage.getItem("posts")) || []
+    );
     const [category, setCategory] = useState(``);
     const [game, setGame] = useState({});
 

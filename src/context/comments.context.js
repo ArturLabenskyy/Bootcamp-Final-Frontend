@@ -5,7 +5,9 @@ import dbApi from "../services/api/db.api";
 export const CommentsContext = createContext();
 
 const CommentsProvider = ({ children }) => {
-    const [allComments, setComments] = useState([]);
+    const [allComments, setComments] = useState(
+        JSON.parse(localStorage.getItem("post")).comments || []
+    );
 
     const getPostComments = async (postId) => {
         try {
@@ -15,6 +17,26 @@ const CommentsProvider = ({ children }) => {
             }
         } catch (error) {
             console.log(error);
+        }
+    };
+
+    const createComment = async (comment) => {
+        try {
+            const res = dbApi.post(`comments`, comment);
+            if (res) {
+                return res;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const commentPublicDate = (comment) => {
+        if (comment) {
+            let date = comment.createdAt.replace("T", " ");
+            return date.slice(0, -5);
+        } else {
+            return "";
         }
     };
 
@@ -41,6 +63,8 @@ const CommentsProvider = ({ children }) => {
                 setComments,
                 getPostComments,
                 getCommentAuthor,
+                createComment,
+                commentPublicDate,
             }}
         >
             {" "}

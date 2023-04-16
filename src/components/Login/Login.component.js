@@ -10,7 +10,7 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const { setLogin } = useAuthContext();
+    const { setLogin, getCurrentUser } = useAuthContext();
 
     const navigate = useNavigate();
 
@@ -21,15 +21,14 @@ const Login = () => {
                 password: password,
             });
             if (res) {
-                console.log(res);
-
                 const token = res.data.token;
                 Cookies.set("token", token, { expires: 7 });
-                localStorage.setItem("token", token);
+                localStorage.setItem("isLogin", true);
 
                 setLogin(true);
+                const userId = await getCurrentUser();
+                localStorage.setItem("userId", JSON.stringify(userId._id));
                 navigate("/");
-                // await getCurrentUser();
             }
         } catch (error) {
             console.log(error);

@@ -5,6 +5,11 @@ const Wrapped = styled.div`
         width: 100%;
         text-align: center;
     }
+
+    .title:hover {
+        cursor: pointer;
+        color: var(--secondary-background-color);
+    }
 `;
 
 export default Wrapped;

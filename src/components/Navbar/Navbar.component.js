@@ -11,8 +11,8 @@ const Navbar = () => {
     const { isLogin, setLogin, logoutUser } = useAuthContext();
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (token) {
+        // const token = localStorage.getItem("token");
+        if (localStorage.getItem("isLogin")) {
             setLogin(true);
             // getCurrentUser();
         } else {

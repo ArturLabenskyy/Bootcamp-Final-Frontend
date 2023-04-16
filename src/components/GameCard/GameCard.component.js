@@ -20,12 +20,14 @@ const GameCard = ({ category, description, gameUrl, logo }) => {
             if (res) {
                 const posts = [...res.data];
                 setPosts(posts);
+                localStorage.setItem("posts", JSON.stringify(posts));
                 setGame({
                     name: category,
                     site: gameUrl,
                     logo: logo,
                     description: description,
                 });
+                localStorage.setItem("game-logo", JSON.stringify(gameUrl));
                 navigate(`/category/${gameCategory}`);
             }
         } catch (error) {

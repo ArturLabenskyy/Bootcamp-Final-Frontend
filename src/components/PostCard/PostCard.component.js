@@ -1,29 +1,46 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import Wrapped from "./PostCard.styled";
 
-const PostCard = ({ post, comments }) => {
-    const lastIndex = comments.length - 1;
+import { usePostContext } from "../../context/post.context";
+import { useCommentsContext } from "../../context/comments.context";
 
-    console.log(comments);
+const PostCard = ({ post, comments }) => {
+    const navigate = useNavigate();
+
+    const { setPost, lastCommentDate } = usePostContext();
+    const { setComments } = useCommentsContext();
+
+    const postClick = () => {
+        setPost(post);
+        setComments(post.comments);
+        localStorage.setItem("post", JSON.stringify(post));
+        navigate(`/posts/${post._id.slice(-6)}`);
+    };
+
     return (
         <Wrapped className="row">
             <div className="title-author column">
-                <h2 className="title">{post.title}</h2>
+                <h2 className="title" onClick={postClick}>
+                    {post.title}
+                </h2>
                 <h2 className="author">{post.author.name}</h2>
             </div>
             <div className="last-message column">
-                {comments.length > 0 ? (
+                {post.comments.length > 0 ? (
                     <h2>
-                        {comments[lastIndex].updatedAt} <br />
-                        from {comments[lastIndex].author.name}
+                        {lastCommentDate(post)} <br />
+                        from {post.comments[comments.length - 1].author.name}
                     </h2>
                 ) : (
-                    <h2>No comments</h2>
+                    <h2>No messages</h2>
                 )}
             </div>
             <div className="comments row">
-                <h2 className="comments-num center-text">{comments.length}</h2>
+                <h2 className="comments-num center-text">
+                    {post.comments.length}
+                </h2>
             </div>
         </Wrapped>
     );
