@@ -52,6 +52,7 @@ const GamesHolder = () => {
                                     description={game.short_description}
                                     gameUrl={game.game_url}
                                     logo={game.thumbnail}
+                                    comments={game.comments}
                                 />
                             );
                         })}

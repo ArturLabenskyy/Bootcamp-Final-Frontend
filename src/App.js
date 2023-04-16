@@ -2,6 +2,8 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { AuthProvider } from "./context/auth.context";
+import { GamesProvider } from "./context/games.context";
+import { CommentsProvider } from "./context/comments.context";
 
 import "./styles/app.css";
 
@@ -11,6 +13,7 @@ import RegistrationPage from "./pages/registration.page";
 import LoginPage from "./pages/login.page";
 import AboutPage from "./pages/about.page";
 import BrowsePage from "./pages/browse.page";
+import CategoryPage from "./pages/category.page";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +42,11 @@ const router = createBrowserRouter([
     },
 
     {
+        path: "/category/:category",
+        element: <CategoryPage />,
+    },
+
+    {
         path: "*",
         element: <ErrorPage />,
     },
@@ -47,9 +55,13 @@ const router = createBrowserRouter([
 function App() {
     return (
         <AuthProvider>
-            <div className="main">
-                <RouterProvider router={router} />
-            </div>
+            <GamesProvider>
+                <CommentsProvider>
+                    <div className="main">
+                        <RouterProvider router={router} />
+                    </div>
+                </CommentsProvider>
+            </GamesProvider>
         </AuthProvider>
     );
 }

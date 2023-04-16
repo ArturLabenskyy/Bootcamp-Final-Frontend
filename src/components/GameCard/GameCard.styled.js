@@ -5,7 +5,6 @@ const Wrapped = styled.div`
         width: 25rem;
         height: 25rem;
         margin: 1rem;
-        /* border: 1.3px solid var(--secondary-background-color); */
         border-radius: 3rem;
         overflow: scroll;
         padding-bottom: 0.7rem;

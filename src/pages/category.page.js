@@ -1,15 +1,15 @@
 import React from "react";
 
 import Navbar from "../components/Navbar/Navbar.component";
-import GamesHolder from "../components/GamesHolder/GamesHolder.component";
+import PostsHolder from "../components/PostsHolder/PostsHolder.component";
 
-const BrowsePage = () => {
+const CategoryPage = () => {
     return (
         <div className="full-page">
             <Navbar />
-            <GamesHolder />
+            <PostsHolder />
         </div>
     );
 };
 
-export default BrowsePage;
+export default CategoryPage;

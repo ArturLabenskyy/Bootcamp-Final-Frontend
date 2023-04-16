@@ -1,14 +1,15 @@
 import { useState, createContext, useContext } from "react";
-// import Cookies from "js-cookie";
 
 import gamesApi from "../services/api/games.api";
-// import dbApi from "../services/api/db.api";
+import dbApi from "../services/api/db.api";
 
 export const GamesContext = createContext();
 
 const GamesProvider = ({ children }) => {
-    const [allGames, setGames] = useState();
-    const [gamePosts, setPosts] = useState();
+    const [allGames, setGames] = useState([]);
+    const [gamePosts, setPosts] = useState([]);
+    const [category, setCategory] = useState(``);
+    const [game, setGame] = useState({});
 
     const getGames = async () => {
         try {
@@ -16,6 +17,14 @@ const GamesProvider = ({ children }) => {
             if (res) {
                 setGames(res.data);
             }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const getPostAuthor = async (id) => {
+        try {
+            const res = await dbApi.get(`users/${id}`);
         } catch (error) {
             console.log(error);
         }
@@ -29,6 +38,10 @@ const GamesProvider = ({ children }) => {
                 getGames,
                 gamePosts,
                 setPosts,
+                category,
+                setCategory,
+                game,
+                setGame,
             }}
         >
             {" "}
