@@ -14,14 +14,14 @@ const Wrapped = styled.div`
         align-items: center;
     }
 
-    .left-logo:hover {
-        cursor: pointer;
-    }
-
     .logo {
         width: 7rem;
         margin-left: 1rem;
         margin-right: 1rem;
+    }
+
+    .logo:hover {
+        cursor: pointer;
     }
 
     h1 {
@@ -29,7 +29,8 @@ const Wrapped = styled.div`
         font-size: 3rem;
     }
 
-    .left-logo:hover h1 {
+    .app-name:hover {
+        cursor: pointer;
         color: var(--secondary-text-color);
     }
 

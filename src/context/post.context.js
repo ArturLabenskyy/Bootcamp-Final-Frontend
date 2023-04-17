@@ -5,9 +5,7 @@ import dbApi from "../services/api/db.api";
 export const PostContext = createContext();
 
 const PostProvider = ({ children }) => {
-    const [post, setPost] = useState(
-        JSON.parse(localStorage.getItem("post")) || []
-    );
+    const [post, setPost] = useState([]);
 
     const postPublicDate = (post) => {
         let date = post.createdAt.replace("T", " ");
@@ -23,6 +21,32 @@ const PostProvider = ({ children }) => {
         }
     };
 
+    const getCategoryPosts = async () => {
+        try {
+            const category = JSON.parse(localStorage.getItem("category"));
+            const res = await dbApi.get(`posts/category/${category}`);
+            if (res) {
+                return res.data;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const createPost = async (post) => {
+        try {
+            const res = await dbApi.post("posts/", post);
+            if (res) {
+                const newPosts = await getCategoryPosts();
+                if (newPosts) {
+                    return newPosts;
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <PostContext.Provider
             value={{
@@ -30,6 +54,8 @@ const PostProvider = ({ children }) => {
                 setPost,
                 postPublicDate,
                 lastCommentDate,
+                createPost,
+                getCategoryPosts,
             }}
         >
             {" "}

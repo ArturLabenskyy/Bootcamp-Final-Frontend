@@ -11,10 +11,8 @@ const Navbar = () => {
     const { isLogin, setLogin, logoutUser } = useAuthContext();
 
     useEffect(() => {
-        // const token = localStorage.getItem("token");
         if (localStorage.getItem("isLogin")) {
             setLogin(true);
-            // getCurrentUser();
         } else {
             setLogin(false);
         }
@@ -23,6 +21,7 @@ const Navbar = () => {
     const authClick = async () => {
         try {
             if (isLogin) {
+                localStorage.removeItem("isLogin");
                 setLogin(false);
                 await logoutUser();
                 navigate("/");
@@ -34,13 +33,16 @@ const Navbar = () => {
 
     return (
         <Wrapped>
-            <div className="left-logo" onClick={() => navigate("/")}>
+            <div className="left-logo">
                 <img
                     className="logo"
                     src="https://cdn-icons-png.flaticon.com/512/6841/6841127.png"
                     alt="logo"
+                    onClick={() => navigate("/")}
                 />
-                <h1>iWannaPlay</h1>
+                <h1 className="app-name" onClick={() => navigate("/")}>
+                    iWannaPlay
+                </h1>
             </div>
 
             <div className="mid-links center-text">

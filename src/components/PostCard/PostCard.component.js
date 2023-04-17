@@ -6,11 +6,15 @@ import Wrapped from "./PostCard.styled";
 import { usePostContext } from "../../context/post.context";
 import { useCommentsContext } from "../../context/comments.context";
 
-const PostCard = ({ post, comments }) => {
+import dbApi from "../../services/api/db.api";
+
+const PostCard = ({ post, comments, setFetching, setPosts }) => {
     const navigate = useNavigate();
 
-    const { setPost, lastCommentDate } = usePostContext();
+    const { setPost, lastCommentDate, getCategoryPosts } = usePostContext();
     const { setComments } = useCommentsContext();
+
+    const userId = JSON.parse(localStorage.getItem("userId"));
 
     const postClick = () => {
         setPost(post);
@@ -19,9 +23,23 @@ const PostCard = ({ post, comments }) => {
         navigate(`/posts/${post._id.slice(-6)}`);
     };
 
+    const deletePost = async () => {
+        try {
+            setFetching(true);
+            const res = await dbApi.delete(`posts/${post._id}`);
+            if (res) {
+                setFetching(false);
+                getCategoryPosts(setPosts);
+                return;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <Wrapped className="row">
-            <div className="title-author column">
+            <div className="title-and-author column ">
                 <h2 className="title" onClick={postClick}>
                     {post.title}
                 </h2>
@@ -29,7 +47,7 @@ const PostCard = ({ post, comments }) => {
             </div>
             <div className="last-message column">
                 {post.comments.length > 0 ? (
-                    <h2>
+                    <h2 className="message-date">
                         {lastCommentDate(post)} <br />
                         from {post.comments[comments.length - 1].author.name}
                     </h2>
@@ -37,10 +55,17 @@ const PostCard = ({ post, comments }) => {
                     <h2>No messages</h2>
                 )}
             </div>
-            <div className="comments row">
+            <div className="comments-number row">
                 <h2 className="comments-num center-text">
                     {post.comments.length}
                 </h2>
+            </div>
+            <div className="editing center-text">
+                {post.author._id === userId && (
+                    <button className="delete-button " onClick={deletePost}>
+                        Delete
+                    </button>
+                )}
             </div>
         </Wrapped>
     );

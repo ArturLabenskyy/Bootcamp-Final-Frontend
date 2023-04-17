@@ -18,16 +18,15 @@ const GameCard = ({ category, description, gameUrl, logo }) => {
         try {
             const res = await dbApi.get(`posts/category/${gameCategory}`);
             if (res) {
-                const posts = [...res.data];
-                setPosts(posts);
-                localStorage.setItem("posts", JSON.stringify(posts));
+                localStorage.setItem("category", JSON.stringify(gameCategory));
+                setPosts(res.data);
                 setGame({
                     name: category,
                     site: gameUrl,
                     logo: logo,
                     description: description,
                 });
-                localStorage.setItem("game-logo", JSON.stringify(gameUrl));
+                localStorage.setItem("game-logo", JSON.stringify(logo));
                 navigate(`/category/${gameCategory}`);
             }
         } catch (error) {

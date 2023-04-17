@@ -5,15 +5,14 @@ import dbApi from "../services/api/db.api";
 export const CommentsContext = createContext();
 
 const CommentsProvider = ({ children }) => {
-    const [allComments, setComments] = useState(
-        JSON.parse(localStorage.getItem("post")).comments || []
-    );
+    const [allComments, setComments] = useState([]);
 
-    const getPostComments = async (postId) => {
+    const updatePostComments = async (postId) => {
         try {
             const res = await dbApi.get(`comments/post/${postId}`);
             if (res) {
                 setComments(res.data);
+                return;
             }
         } catch (error) {
             console.log(error);
@@ -23,9 +22,7 @@ const CommentsProvider = ({ children }) => {
     const createComment = async (comment) => {
         try {
             const res = dbApi.post(`comments`, comment);
-            if (res) {
-                return res;
-            }
+            return res;
         } catch (error) {
             console.log(error);
         }
@@ -61,10 +58,10 @@ const CommentsProvider = ({ children }) => {
             value={{
                 allComments,
                 setComments,
-                getPostComments,
                 getCommentAuthor,
                 createComment,
                 commentPublicDate,
+                updatePostComments,
             }}
         >
             {" "}

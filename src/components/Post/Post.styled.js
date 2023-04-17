@@ -1,10 +1,17 @@
 import styled from "styled-components";
 
 const Wrapped = styled.div`
+    width: 70%;
+    height: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    overflow-x: hidden;
+
     .post {
         width: 80%;
-        overflow: scroll;
-        overflow-x: hidden;
     }
 
     .header-box {
@@ -25,6 +32,11 @@ const Wrapped = styled.div`
 
     .publish-date {
         margin-right: 1.2rem;
+    }
+
+    .post-header {
+        justify-self: center;
+        align-self: center;
     }
 
     .post-content {
@@ -48,6 +60,8 @@ const Wrapped = styled.div`
     .post-info {
         height: 10rem;
         width: 100%;
+        justify-self: center;
+        align-self: center;
         justify-content: space-between;
         align-items: center;
     }
@@ -63,7 +77,7 @@ const Wrapped = styled.div`
         height: 5rem;
         width: 9rem;
         font-size: 2rem;
-        margin-right: 2rem;
+        margin: 2rem;
         justify-self: center;
 
         color: var(--main-text-color);

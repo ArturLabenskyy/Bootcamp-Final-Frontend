@@ -3,6 +3,7 @@ import styled from "styled-components";
 const Wrapped = styled.div`
     width: 100%;
     display: ${(props) => (props.show ? "block" : "none")};
+    margin: 1rem;
 
     input {
         border-style: none;

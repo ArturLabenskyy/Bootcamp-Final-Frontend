@@ -10,7 +10,7 @@ const CommentForm = ({ handleClose, show, setFetching }) => {
     const [commentText, setCommentText] = useState("");
     const inputRef = useRef(null);
 
-    const { setComments, createComment } = useCommentsContext();
+    const { createComment, updatePostComments } = useCommentsContext();
 
     useEffect(() => {
         if (show && inputRef.current) {
@@ -31,15 +31,12 @@ const CommentForm = ({ handleClose, show, setFetching }) => {
         setFetching(true);
         const res = await createComment(newComment);
         if (res) {
-            post.comments.push(newComment);
-            console.log(post.comments);
-            localStorage.setItem("post", JSON.stringify(post));
-            console.log(post.comments);
-            setComments(post.comments);
-
-            setFetching(false);
             setCommentText("");
+            console.log("updated started!");
+
+            await updatePostComments(post._id);
             handleClose();
+            setFetching(false);
         }
     };
 

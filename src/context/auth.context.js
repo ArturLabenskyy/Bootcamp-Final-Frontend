@@ -29,6 +29,7 @@ const AuthProvider = ({ children }) => {
                 localStorage.removeItem("post");
                 localStorage.removeItem("isLogin");
                 localStorage.removeItem("game-logo");
+                localStorage.removeItem("category");
             }
         } catch (error) {
             console.log(error);

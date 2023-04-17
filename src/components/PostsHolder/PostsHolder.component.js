@@ -1,33 +1,89 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { useGamesContext } from "../../context/games.context";
+import { usePostContext } from "../../context/post.context";
 
 import Wrapped from "./PostsHolder.styled";
 import PostCard from "../PostCard/PostCard.component";
+import Loader from "../Loader/Loader.component";
+
+import PostForm from "../PostForm/PostForm.component";
 
 const PostsHolder = () => {
-    const { gamePosts } = useGamesContext();
+    const [showModal, setShowModal] = useState(false);
+    const [isFetching, setFetching] = useState(false);
+
+    const { gamePosts, category, setPosts } = useGamesContext();
+    const { getCategoryPosts } = usePostContext();
+
+    useEffect(() => {
+        if (!gamePosts.length) {
+            const posts = getCategoryPosts(setPosts);
+
+            if (posts) {
+                setPosts(posts);
+            } else {
+                setPosts([]);
+            }
+        }
+    }, [gamePosts, getCategoryPosts, setPosts]);
+
+    const closeModal = () => {
+        setShowModal(false);
+    };
+
+    const openModal = () => {
+        setShowModal(true);
+        return isFetching;
+    };
 
     return (
-        <Wrapped className="column center-text">
-            <div className="posts-holder">
-                <div className="posts-info row">
-                    <h2 className="title-author">Title / Author</h2>
-                    <h2 className="last-message">Last message</h2>
-                    <h2 className="comments ">Comments</h2>
-                </div>
-                <div className="posts">
-                    {gamePosts.map((post) => {
-                        return (
-                            <PostCard
-                                key={post._id}
-                                post={post}
-                                comments={post.comments}
-                            />
-                        );
-                    })}
-                </div>
-            </div>
+        <Wrapped show={showModal}>
+            {isFetching ? (
+                <Loader />
+            ) : (
+                <>
+                    <div className="category-info row">
+                        <img
+                            className="category-logo"
+                            src={JSON.parse(localStorage.getItem("game-logo"))}
+                            alt="game-logo"
+                        />
+                        <button className="add-post" onClick={openModal}>
+                            Create Post
+                        </button>
+                    </div>
+                    <div className="posts-holder">
+                        <PostForm
+                            closeModal={closeModal}
+                            category={category}
+                            show={showModal}
+                            setFetching={setFetching}
+                            postTitle=""
+                            postContent=""
+                        />
+                        <div className="posts-info row">
+                            <h2 className="title-author">Title / Author</h2>
+                            <h2 className="last-message">Last message</h2>
+                            <h2 className="comments ">Comments</h2>
+                            <h2 className="actions">Actions</h2>
+                        </div>
+                        <div className="posts column">
+                            {gamePosts.map((post) => {
+                                return (
+                                    <PostCard
+                                        key={post._id}
+                                        post={post}
+                                        comments={post.comments}
+                                        setFetching={setFetching}
+                                        setPosts={setPosts}
+                                    />
+                                );
+                            })}
+                        </div>
+                    </div>
+                </>
+            )}
         </Wrapped>
     );
 };

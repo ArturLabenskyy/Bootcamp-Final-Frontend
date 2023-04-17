@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 const Wrapped = styled.div`
-    margin: 1.2rem 3rem;
+    width: 100%;
+    margin: 1.2rem 0rem;
+    ma
     border-left: var(--secondary-text-color) dotted 1px;
     /* border-top: var(--secondary-text-color) dotted 1px; */
 
