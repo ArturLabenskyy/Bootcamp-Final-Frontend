@@ -2,9 +2,12 @@ import { useState, createContext, useContext } from "react";
 
 import dbApi from "../services/api/db.api";
 
+import { useGamesContext } from "./games.context";
+
 export const PostContext = createContext();
 
 const PostProvider = ({ children }) => {
+    const { setPosts } = useGamesContext();
     const [post, setPost] = useState([]);
 
     const postPublicDate = (post) => {
@@ -24,9 +27,16 @@ const PostProvider = ({ children }) => {
     const getCategoryPosts = async () => {
         try {
             const category = JSON.parse(localStorage.getItem("category"));
+            // console.log("fetch started for category:", category);
             const res = await dbApi.get(`posts/category/${category}`);
-            if (res) {
-                return res.data;
+            if (res && res !== []) {
+                setPosts(res.data);
+                // return [];
+                // return res.data;
+            } else {
+                setPosts([]);
+                // console.log("res", res);
+                // return res;
             }
         } catch (error) {
             console.log(error);

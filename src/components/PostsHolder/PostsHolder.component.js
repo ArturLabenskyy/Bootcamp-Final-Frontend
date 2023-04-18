@@ -11,22 +11,19 @@ import PostForm from "../PostForm/PostForm.component";
 
 const PostsHolder = () => {
     const [showModal, setShowModal] = useState(false);
-    const [isFetching, setFetching] = useState(false);
+    const [isGamePostsResolved, setIsGamePostsResolved] = useState(false);
 
-    const { gamePosts, category, setPosts } = useGamesContext();
+    const { gamePosts, category, setPosts, isFetching, setFetching } =
+        useGamesContext();
     const { getCategoryPosts } = usePostContext();
 
     useEffect(() => {
         if (!gamePosts.length) {
-            const posts = getCategoryPosts(setPosts);
-
-            if (posts) {
-                setPosts(posts);
-            } else {
-                setPosts([]);
-            }
+            getCategoryPosts();
+        } else {
+            setIsGamePostsResolved(true);
         }
-    }, [gamePosts, getCategoryPosts, setPosts]);
+    }, [getCategoryPosts, gamePosts]);
 
     const closeModal = () => {
         setShowModal(false);
@@ -34,12 +31,11 @@ const PostsHolder = () => {
 
     const openModal = () => {
         setShowModal(true);
-        return isFetching;
     };
 
     return (
         <Wrapped show={showModal}>
-            {isFetching ? (
+            {isFetching || !isGamePostsResolved ? (
                 <Loader />
             ) : (
                 <>
@@ -69,17 +65,15 @@ const PostsHolder = () => {
                             <h2 className="actions">Actions</h2>
                         </div>
                         <div className="posts column">
-                            {gamePosts.map((post) => {
-                                return (
-                                    <PostCard
-                                        key={post._id}
-                                        post={post}
-                                        comments={post.comments}
-                                        setFetching={setFetching}
-                                        setPosts={setPosts}
-                                    />
-                                );
-                            })}
+                            {gamePosts.map((post) => (
+                                <PostCard
+                                    key={post._id}
+                                    post={post}
+                                    comments={post.comments}
+                                    setPosts={setPosts}
+                                    setFetching={setFetching}
+                                />
+                            ))}
                         </div>
                     </div>
                 </>

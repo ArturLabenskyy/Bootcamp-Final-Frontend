@@ -11,6 +11,8 @@ const GamesProvider = ({ children }) => {
     const [category, setCategory] = useState(``);
     const [game, setGame] = useState({});
 
+    const [isFetching, setFetching] = useState(false);
+
     const getGames = async () => {
         try {
             const res = await gamesApi.get("games");
@@ -42,6 +44,8 @@ const GamesProvider = ({ children }) => {
                 setCategory,
                 game,
                 setGame,
+                isFetching,
+                setFetching,
             }}
         >
             {" "}

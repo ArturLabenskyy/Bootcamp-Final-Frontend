@@ -63,6 +63,139 @@ const Wrapped = styled.div`
         color: var(--main-background-color);
         background-color: var(--secondary-text-color);
     }
+
+    @media only screen and (max-width: 767px) {
+        .comments-number {
+            width: 20%;
+            text-align: center;
+        }
+
+        .title-and-author {
+            width: 40%;
+            margin-bottom: 1rem;
+        }
+
+        .message-date {
+            font-size: 1.2rem;
+        }
+
+        .title {
+            color: var(--secondary-background-color);
+            font-size: 2.6rem;
+        }
+
+        .title:hover {
+            cursor: pointer;
+            color: var(--secondary-text-color);
+        }
+
+        .author {
+            font-size: 1.3rem;
+        }
+
+        .delete-button {
+            height: 5rem;
+            width: 8rem;
+        }
+
+        .last-message {
+            width: 20%;
+            font-size: 1rem;
+        }
+
+        .editing {
+            width: 20%;
+        }
+
+        .delete-button {
+            height: 3rem;
+            width: 8rem;
+            color: var(--main-text-color);
+            background-color: var(--secondary-background-color);
+            border: none;
+            border-radius: 1rem;
+        }
+
+        .delete-button:hover {
+            color: var(--main-background-color);
+            background-color: var(--secondary-text-color);
+        }
+
+        .comments-num {
+            margin: auto;
+        }
+
+        .message-date {
+            font-size: 1.3rem;
+        }
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .comments-number {
+            width: 20%;
+            text-align: center;
+        }
+
+        .title-and-author {
+            width: 40%;
+            margin-bottom: 1rem;
+        }
+
+        .message-date {
+            font-size: 1.2rem;
+        }
+
+        .title {
+            color: var(--secondary-background-color);
+            font-size: 2.6rem;
+        }
+
+        .title:hover {
+            cursor: pointer;
+            color: var(--secondary-text-color);
+        }
+
+        .author {
+            font-size: 1.3rem;
+        }
+
+        .delete-button {
+            height: 5rem;
+            width: 8rem;
+        }
+
+        .last-message {
+            width: 20%;
+            font-size: 1rem;
+        }
+
+        .editing {
+            width: 20%;
+        }
+
+        .delete-button {
+            height: 3rem;
+            width: 8rem;
+            color: var(--main-text-color);
+            background-color: var(--secondary-background-color);
+            border: none;
+            border-radius: 1rem;
+        }
+
+        .delete-button:hover {
+            color: var(--main-background-color);
+            background-color: var(--secondary-text-color);
+        }
+
+        .comments-num {
+            margin: auto;
+        }
+
+        .message-date {
+            font-size: 1.3rem;
+        }
+    }
+    }
 `;
 
 export default Wrapped;

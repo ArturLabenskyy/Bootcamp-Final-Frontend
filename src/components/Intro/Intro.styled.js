@@ -20,6 +20,19 @@ const Wrapped = styled.div`
                 background-position: 200% center;
             }
         }
+
+        @media (max-width: 820px) {
+            padding: 1.3rem;
+            text-align: center;
+
+            font-size: 2rem;
+        }
+
+        @media (max-width: 576px) {
+            padding: 1.3rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
     }
 `;
 

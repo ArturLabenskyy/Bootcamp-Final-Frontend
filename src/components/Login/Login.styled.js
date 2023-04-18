@@ -44,6 +44,20 @@ const Wrapped = styled.div`
         color: var(--secondary-text-color);
         background-color: var(--secondary-hover-color);
     }
+
+    @media only screen and (max-width: 600px) {
+        .login-form {
+            width: 70%;
+            max-width: 500px;
+        }
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .login-form {
+            width: 30%;
+            max-width: 500px;
+        }
+    }
 `;
 
 export default Wrapped;

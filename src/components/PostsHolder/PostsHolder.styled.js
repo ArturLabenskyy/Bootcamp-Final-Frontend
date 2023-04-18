@@ -82,6 +82,118 @@ const Wrapped = styled.div`
         color: var(--main-background-color);
         background-color: var(--secondary-text-color);
     }
+
+    @media only screen and (max-width: 767px) {
+        width: 100%;
+        padding: 2rem;
+        .container {
+            width: 100%;
+            height: auto;
+        }
+
+        .posts-info {
+            height: 5rem;
+        }
+
+        .posts-holder {
+            width: 100%;
+            height: 50%;
+        }
+
+        .title-author {
+            width: 40%;
+            font-size: 1.5rem;
+        }
+
+        .last-message {
+            width: 20%;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .comments {
+            margin: auto;
+            width: 20%;
+            font-size: 1.5rem;
+        }
+
+        .actions {
+            width: 20%;
+            margin: auto;
+            font-size: 1.5rem;
+        }
+
+        .category-logo {
+            margin-left: 1rem;
+            height: 5rem;
+            width: 9rem;
+            border-radius: 1rem;
+        }
+
+        .add-post {
+            height: 5rem;
+            width: 9rem;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        width: 100%;
+        padding: 2rem;
+        .container {
+            width: 100%;
+            height: auto;
+        }
+
+        .posts-info {
+            height: 5rem;
+        }
+
+        .posts-holder {
+            width: 100%;
+            height: 50%;
+        }
+
+        .title-author {
+            width: 40%;
+            font-size: 1.5rem;
+        }
+
+        .last-message {
+            width: 20%;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .comments {
+            margin: auto;
+            width: 20%;
+            font-size: 1.5rem;
+        }
+
+        .actions {
+            width: 20%;
+            margin: auto;
+            font-size: 1.5rem;
+        }
+
+        .category-logo {
+            margin-left: 1rem;
+            height: 5rem;
+            width: 9rem;
+            border-radius: 1rem;
+        }
+
+        .add-post {
+            height: 5rem;
+            width: 9rem;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+    }
 `;
 
 export default Wrapped;

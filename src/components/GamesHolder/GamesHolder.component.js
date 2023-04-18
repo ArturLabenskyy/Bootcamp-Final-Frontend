@@ -10,9 +10,8 @@ import gamesApi from "../../services/api/games.api";
 
 const GamesHolder = () => {
     const [searchTerm, setSearchTerm] = useState("");
-    const [isFetching, setFetching] = useState(false);
 
-    const { allGames, setGames } = useGamesContext();
+    const { allGames, setGames, isFetching, setFetching } = useGamesContext();
 
     useEffect(() => {
         const getGames = async () => {
@@ -61,6 +60,7 @@ const GamesHolder = () => {
                                         gameUrl={game.game_url}
                                         logo={game.thumbnail}
                                         comments={game.comments}
+                                        setFetching={setFetching}
                                     />
                                 );
                             })}

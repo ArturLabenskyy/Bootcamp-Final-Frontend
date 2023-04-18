@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Wrapped = styled.div`
     height: 15%;
-    background: #0e1827;
+    background: var(--main-background-color);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -70,6 +70,55 @@ const Wrapped = styled.div`
     .sign-up:hover {
         background-color: var(--secondary-hover-color);
         color: var(--secondary-text-color);
+    }
+
+    /* Media queries */
+    @media only screen and (max-width: 768px) {
+        /* For tablets */
+        .logo {
+            width: 5rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+        }
+        .right-login {
+            width: 20rem;
+            margin: auto 1rem;
+        }
+        .nav-link {
+            width: 6rem;
+            font-size: 1.5rem;
+        }
+        .sign-up {
+            width: 15rem;
+            font-size: 1.5rem;
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        /* For mobile phones */
+        padding: 1rem;
+        .logo {
+            width: 3rem;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        .right-login {
+            width: 15rem;
+            margin: auto 0.5rem;
+        }
+        .nav-link {
+            width: 5rem;
+            font-size: 1.5rem;
+        }
+        .sign-up {
+            height: 4rem;
+            width: 12rem;
+            font-size: 1.2rem;
+        }
     }
 `;
 

@@ -52,6 +52,12 @@ const Wrapped = styled.div`
         color: var(--main-background-color);
         background-color: var(--secondary-text-color);
     }
+
+    @media only screen and (max-width: 767px) {
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    }
 `;
 
 export default Wrapped;

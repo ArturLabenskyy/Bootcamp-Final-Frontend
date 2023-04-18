@@ -24,6 +24,26 @@ const Wrapped = styled.div`
     input {
         max-height: 2rem;
     }
+
+    @media only screen and (max-width: 767px) {
+        input {
+            width: 50%;
+        }
+
+        .row {
+            justify-content: center;
+        }
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        input {
+            width: 50%;
+        }
+
+        .row {
+            justify-content: center;
+        }
+    }
 `;
 
 export default Wrapped;

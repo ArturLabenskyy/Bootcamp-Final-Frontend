@@ -52,13 +52,11 @@ const PostCard = ({ post, comments, setFetching, setPosts }) => {
                         from {post.comments[comments.length - 1].author.name}
                     </h2>
                 ) : (
-                    <h2>No messages</h2>
+                    <h2 className="message-date">No messages</h2>
                 )}
             </div>
             <div className="comments-number row">
-                <h2 className="comments-num center-text">
-                    {post.comments.length}
-                </h2>
+                <h2 className="comments-num">{post.comments.length}</h2>
             </div>
             <div className="editing center-text">
                 {post.author._id === userId && (
