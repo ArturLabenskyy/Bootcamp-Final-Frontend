@@ -30,6 +30,7 @@ const AuthProvider = ({ children }) => {
                 localStorage.removeItem("isLogin");
                 localStorage.removeItem("game-logo");
                 localStorage.removeItem("category");
+                localStorage.removeItem("token");
             }
         } catch (error) {
             console.log(error);
