@@ -32,11 +32,15 @@ const PostForm = ({
             };
 
             const res = await createPost(newPost);
+            console.log(res);
             if (res) {
                 posts = res;
+                setFetching(false);
                 setPosts(posts);
                 closeModal();
+            } else {
                 setFetching(false);
+                closeModal();
             }
         } catch (error) {
             console.log(error);

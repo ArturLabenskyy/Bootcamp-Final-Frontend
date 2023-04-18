@@ -1,7 +1,7 @@
 import { useState, createContext, useContext } from "react";
 
 import gamesApi from "../services/api/games.api";
-import dbApi from "../services/api/db.api";
+// import dbApi from "../services/api/db.api";
 
 export const GamesContext = createContext();
 
@@ -19,14 +19,6 @@ const GamesProvider = ({ children }) => {
             if (res) {
                 setGames(res.data);
             }
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    const getPostAuthor = async (id) => {
-        try {
-            const res = await dbApi.get(`users/${id}`);
         } catch (error) {
             console.log(error);
         }

@@ -11,8 +11,10 @@ const PostProvider = ({ children }) => {
     const [post, setPost] = useState([]);
 
     const postPublicDate = (post) => {
-        let date = post.createdAt.replace("T", " ");
-        return date.slice(0, -5);
+        if (post && post.length) {
+            let date = post.createdAt.replace("T", " ");
+            return date.slice(0, -5);
+        }
     };
 
     const lastCommentDate = (post) => {
@@ -27,16 +29,11 @@ const PostProvider = ({ children }) => {
     const getCategoryPosts = async () => {
         try {
             const category = JSON.parse(localStorage.getItem("category"));
-            // console.log("fetch started for category:", category);
             const res = await dbApi.get(`posts/category/${category}`);
             if (res && res !== []) {
                 setPosts(res.data);
-                // return [];
-                // return res.data;
             } else {
                 setPosts([]);
-                // console.log("res", res);
-                // return res;
             }
         } catch (error) {
             console.log(error);

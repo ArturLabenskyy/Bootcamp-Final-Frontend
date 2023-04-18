@@ -13,13 +13,17 @@ const Post = () => {
     const [showModal, setShowModal] = useState(false);
     const [isFetching, setFetching] = useState(false);
 
-    const { post, postPublicDate } = usePostContext();
+    const { post, postPublicDate, setPost } = usePostContext();
     const { game } = useGamesContext();
     const { allComments, updatePostComments } = useCommentsContext();
 
+    const newPost = JSON.parse(localStorage.getItem("post"));
+
     useEffect(() => {
         if (!allComments.length) {
-            updatePostComments(post._id);
+            post.length
+                ? updatePostComments(post._id)
+                : updatePostComments(newPost._id);
         }
     }, [allComments, post._id, updatePostComments]);
 
@@ -57,8 +61,14 @@ const Post = () => {
                         </div>
                         <div className="header-box">
                             <div className="post-header row center-text">
-                                <h1 className="author">{post.author.name}</h1>
-                                <h1 className="title">{post.title}</h1>
+                                <h1 className="author">
+                                    {post.length
+                                        ? post.author.name
+                                        : newPost.author.name}
+                                </h1>
+                                <h1 className="title">
+                                    {post.length ? post.title : newPost.title}
+                                </h1>
                                 <h2 className="publish-date">{publicDate}</h2>
                             </div>
                             <div className="post-content">
@@ -67,7 +77,13 @@ const Post = () => {
                         </div>
                         <div className="comments">
                             {allComments.map((el) => {
-                                return <Comment key={el._id} comment={el} />;
+                                return (
+                                    <Comment
+                                        key={el._id}
+                                        comment={el}
+                                        setFetching={setFetching}
+                                    />
+                                );
                             })}
                         </div>
                     </div>

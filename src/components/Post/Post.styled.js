@@ -40,13 +40,10 @@ const Wrapped = styled.div`
     }
 
     .post-content {
-        margin: 1.5rem 0;
-        font-size: 3rem;
-    }
-
-    .post-content {
         margin: 1rem;
         margin-left: 3rem;
+        font-size: 3rem;
+        color: var(--secondary-text-color);
     }
 
     .title {

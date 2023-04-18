@@ -20,7 +20,7 @@ const Wrapped = styled.div`
 
     .posts-info {
         margin-bottom: 1rem;
-        height: 10%;
+        height: 15%;
         display: ${(props) => (props.show ? "none" : "flex")};
         border-bottom: 1px var(--secondary-background-color) solid;
     }

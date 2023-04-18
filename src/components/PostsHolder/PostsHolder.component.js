@@ -7,23 +7,35 @@ import Wrapped from "./PostsHolder.styled";
 import PostCard from "../PostCard/PostCard.component";
 import Loader from "../Loader/Loader.component";
 
+import dbApi from "../../services/api/db.api";
+
 import PostForm from "../PostForm/PostForm.component";
 
 const PostsHolder = () => {
     const [showModal, setShowModal] = useState(false);
-    const [isGamePostsResolved, setIsGamePostsResolved] = useState(false);
+    // const [isGamePostsResolved, setIsGamePostsResolved] = useState(false);
 
     const { gamePosts, category, setPosts, isFetching, setFetching } =
         useGamesContext();
     const { getCategoryPosts } = usePostContext();
 
     useEffect(() => {
-        if (!gamePosts.length) {
-            getCategoryPosts();
-        } else {
-            setIsGamePostsResolved(true);
-        }
-    }, [getCategoryPosts, gamePosts]);
+        const getCategoryPosts = async () => {
+            try {
+                const category = JSON.parse(localStorage.getItem("category"));
+                const res = await dbApi.get(`posts/category/${category}`);
+                if (res && res !== []) {
+                    console.log("infinity loop");
+                    setPosts(res.data);
+                } else {
+                    setPosts([]);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getCategoryPosts();
+    }, []);
 
     const closeModal = () => {
         setShowModal(false);
@@ -35,7 +47,7 @@ const PostsHolder = () => {
 
     return (
         <Wrapped show={showModal}>
-            {isFetching || !isGamePostsResolved ? (
+            {isFetching ? (
                 <Loader />
             ) : (
                 <>

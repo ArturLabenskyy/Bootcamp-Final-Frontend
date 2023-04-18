@@ -28,7 +28,7 @@ const GamesHolder = () => {
         };
 
         getGames();
-    }, [setGames]);
+    }, [setGames, setFetching]);
 
     return (
         <Wrapped>
@@ -43,7 +43,6 @@ const GamesHolder = () => {
                 <Loader />
             ) : (
                 <div className="row">
-                    {!allGames && <h1>No games</h1>}
                     {allGames &&
                         allGames
                             .filter((game) =>

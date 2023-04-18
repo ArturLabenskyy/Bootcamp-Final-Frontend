@@ -20,6 +20,24 @@ const Wrapped = styled.div`
         margin: 1rem;
         margin-left: 3rem;
         color: var(--secondary-text-color);
+        justify-content: space-between;
+    }
+
+    .delete-button {
+        margin-right: 1rem;
+        align-self: center;
+        justify-self: center;
+        height: 2rem;
+        width: 5rem;
+        color: var(--main-text-color);
+        background-color: var(--secondary-background-color);
+        border: none;
+        border-radius: 1rem;
+    }
+
+    .delete-button:hover {
+        color: var(--main-background-color);
+        background-color: var(--secondary-text-color);
     }
 
     @media only screen and (max-width: 767px) {
@@ -60,7 +78,6 @@ const Wrapped = styled.div`
             font-size: 1.5rem;
             color: var(--secondary-text-color);
         }
-    }
     }
 `;
 

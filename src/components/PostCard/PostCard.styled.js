@@ -35,11 +35,7 @@ const Wrapped = styled.div`
         font-size: 1.3rem;
     }
 
-    .delete-button {
-        margin-right: 1rem;
-        align-self: center;
-        justify-self: center;
-    }
+
 
     .last-message {
         width: 30%;
@@ -51,6 +47,9 @@ const Wrapped = styled.div`
     }
 
     .delete-button {
+        margin-right: 1rem;
+        align-self: center;
+        justify-self: center;
         height: 2rem;
         width: 5rem;
         color: var(--main-text-color);

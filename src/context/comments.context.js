@@ -53,6 +53,17 @@ const CommentsProvider = ({ children }) => {
         }
     };
 
+    const deleteComment = async (commentId) => {
+        try {
+            const res = await dbApi.delete(`comments/${commentId}`);
+            if (res) {
+                console.log("comment deleting complete!!!!");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <CommentsContext.Provider
             value={{
@@ -62,6 +73,7 @@ const CommentsProvider = ({ children }) => {
                 createComment,
                 commentPublicDate,
                 updatePostComments,
+                deleteComment,
             }}
         >
             {" "}
