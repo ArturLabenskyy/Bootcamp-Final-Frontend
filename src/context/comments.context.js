@@ -45,7 +45,6 @@ const CommentsProvider = ({ children }) => {
                 },
             });
             if (res) {
-                console.log(res);
                 return res.data.author.name;
             }
         } catch (error) {
@@ -57,7 +56,6 @@ const CommentsProvider = ({ children }) => {
         try {
             const res = await dbApi.delete(`comments/${commentId}`);
             if (res) {
-                console.log("comment deleting complete!!!!");
             }
         } catch (error) {
             console.log(error);

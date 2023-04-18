@@ -30,7 +30,6 @@ const CommentForm = ({ handleClose, show, setFetching }) => {
         const res = await createComment(newComment);
         if (res) {
             setCommentText("");
-            console.log("updated started!");
 
             await updatePostComments(post._id);
             handleClose();

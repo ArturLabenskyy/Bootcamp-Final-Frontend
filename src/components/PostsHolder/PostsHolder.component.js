@@ -22,7 +22,6 @@ const PostsHolder = () => {
                 const category = JSON.parse(localStorage.getItem("category"));
                 const res = await dbApi.get(`posts/category/${category}`);
                 if (res && res !== []) {
-                    console.log("infinity loop");
                     setPosts(res.data);
                 } else {
                     setPosts([]);

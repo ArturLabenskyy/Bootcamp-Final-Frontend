@@ -32,7 +32,6 @@ const PostForm = ({
             };
 
             const res = await createPost(newPost);
-            console.log(res);
             if (res) {
                 posts = res;
                 setFetching(false);
