@@ -12,8 +12,7 @@ import { useCommentsContext } from "../../context/comments.context";
 const Post = () => {
     const [showModal, setShowModal] = useState(false);
     const [isFetching, setFetching] = useState(false);
-
-    const { post, postPublicDate, setPost } = usePostContext();
+    const { post, postPublicDate } = usePostContext();
     const { game } = useGamesContext();
     const { allComments, updatePostComments } = useCommentsContext();
 
@@ -25,7 +24,7 @@ const Post = () => {
                 ? updatePostComments(post._id)
                 : updatePostComments(newPost._id);
         }
-    }, [allComments, post._id, updatePostComments]);
+    }, [allComments, post._id, updatePostComments, newPost]);
 
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);

@@ -46,6 +46,7 @@ const AuthProvider = ({ children }) => {
                 userId,
                 getCurrentUser,
                 logoutUser,
+                setId,
             }}
         >
             {" "}

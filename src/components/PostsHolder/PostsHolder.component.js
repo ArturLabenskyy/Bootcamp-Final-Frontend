@@ -17,7 +17,6 @@ const PostsHolder = () => {
 
     const { gamePosts, category, setPosts, isFetching, setFetching } =
         useGamesContext();
-    const { getCategoryPosts } = usePostContext();
 
     useEffect(() => {
         const getCategoryPosts = async () => {
