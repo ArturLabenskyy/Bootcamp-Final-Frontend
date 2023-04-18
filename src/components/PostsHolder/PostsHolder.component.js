@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 import { useGamesContext } from "../../context/games.context";
-import { usePostContext } from "../../context/post.context";
 
 import Wrapped from "./PostsHolder.styled";
 import PostCard from "../PostCard/PostCard.component";
@@ -13,7 +12,6 @@ import PostForm from "../PostForm/PostForm.component";
 
 const PostsHolder = () => {
     const [showModal, setShowModal] = useState(false);
-    // const [isGamePostsResolved, setIsGamePostsResolved] = useState(false);
 
     const { gamePosts, category, setPosts, isFetching, setFetching } =
         useGamesContext();
@@ -34,7 +32,7 @@ const PostsHolder = () => {
             }
         };
         getCategoryPosts();
-    }, []);
+    }, [setPosts]);
 
     const closeModal = () => {
         setShowModal(false);

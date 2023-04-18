@@ -24,7 +24,7 @@ const Post = () => {
                 ? updatePostComments(post._id)
                 : updatePostComments(newPost._id);
         }
-    }, [allComments, post._id, updatePostComments, newPost]);
+    }, [allComments, post, updatePostComments, newPost]);
 
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
