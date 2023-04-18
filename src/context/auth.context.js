@@ -1,4 +1,5 @@
 import { useState, createContext, useContext } from "react";
+import Cookies from "js-cookie";
 
 import mongoApi from "../services/api/db.api";
 
@@ -31,6 +32,7 @@ const AuthProvider = ({ children }) => {
                 localStorage.removeItem("game-logo");
                 localStorage.removeItem("category");
                 localStorage.removeItem("token");
+                Cookies.remove("token");
             }
         } catch (error) {
             console.log(error);
