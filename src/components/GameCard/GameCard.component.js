@@ -5,7 +5,6 @@ import Wrapped from "./GameCard.styled";
 
 import { useGamesContext } from "../../context/games.context";
 import { usePostContext } from "../../context/post.context";
-// import dbApi from "../../services/api/db.api";
 
 const GameCard = ({ category, description, logo }) => {
     const { setCategory, setPosts } = useGamesContext();
