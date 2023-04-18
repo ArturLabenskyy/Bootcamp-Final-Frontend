@@ -3,9 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 import Wrapped from "./CommentForm.styled";
 
 import { useCommentsContext } from "../../context/comments.context";
-import { usePostContext } from "../../context/post.context";
+// import { usePostContext } from "../../context/post.context";
 
-import dbApi from "../../services/api/db.api";
+// import dbApi from "../../services/api/db.api";
 const CommentForm = ({ handleClose, show, setFetching }) => {
     const [commentText, setCommentText] = useState("");
     const inputRef = useRef(null);
