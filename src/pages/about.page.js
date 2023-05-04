@@ -7,7 +7,9 @@ const AboutPage = () => {
     return (
         <div className="full-page">
             <Navbar />
-            <About />
+            <About>
+                here will be its children<h1>gdfgdfgdfgdfgd</h1>
+            </About>
         </div>
     );
 };
