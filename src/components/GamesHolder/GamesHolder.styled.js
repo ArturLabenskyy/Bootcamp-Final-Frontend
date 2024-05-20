@@ -22,7 +22,7 @@ const Wrapped = styled.div`
     }
 
     input {
-        max-height: 2rem;
+        max-height: 3rem;
     }
 
     @media only screen and (max-width: 767px) {
@@ -42,6 +42,22 @@ const Wrapped = styled.div`
 
         .row {
             justify-content: center;
+        }
+    }
+
+    // Extra large + TV screen 2K + 4K
+    @media only screen and (min-width: 1921px) {
+        input {
+            height: 3rem;
+            width: 13%;
+        }
+
+        h2 {
+            font-size: 3rem;
+        }
+
+        .filter {
+            height: 5rem;
         }
     }
 `;

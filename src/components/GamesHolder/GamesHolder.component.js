@@ -31,9 +31,9 @@ const GamesHolder = () => {
     }, [setGames, setFetching]);
 
     return (
-        <Wrapped>
+        <Wrapped className="scrollbar">
             <div className="filter row center-text">
-                <h2>Search: </h2>
+                <h2>Find Your Next Game: </h2>
                 <input
                     type="text"
                     onChange={(e) => setSearchTerm(e.target.value)}
