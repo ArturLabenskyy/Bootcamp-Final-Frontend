@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const dbApi = axios.create({
-    baseURL: "https://wannaplay.cyclic.app/api/v1/",
+    baseURL: "https://bootcamp-final-backend.onrender.com/api/v1/",
 });
 
 dbApi.interceptors.request.use((config) => {
